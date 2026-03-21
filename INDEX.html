@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taquería María — Desde 1959</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Libre+Baskerville:ital,wght@0,700;1,700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --negro:  #ff4800;
+  --blanco: #F5F0E8;
+  --gris:   #B8005C;
+  --gris2:  #A80054;
+  --rosa:   #FFE000;
+  --linea:  rgba(255,255,255,.15);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family: 'Barlow Condensed', sans-serif;
+  background: var(--negro);
+  color: var(--blanco);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:200;
+  display: flex; align-items:center; justify-content:space-between;
+  padding: 1.2rem 5vw;
+  transition: background .3s;
+}
+nav.on {
+  background: rgba(212,0,107,.97);
+  border-bottom: 1px solid var(--linea);
+  backdrop-filter: blur(8px);
+}
+.logo {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--blanco);
+  text-decoration: none;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.logo em { font-style:italic; }
+nav ul { display:flex; gap:2.5rem; list-style:none; }
+nav ul a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .82rem; font-weight:600;
+  letter-spacing: .35em; text-transform:uppercase;
+  color: rgba(245,240,232,.45);
+  text-decoration:none; transition:color .2s;
+}
+nav ul a:hover { color: var(--blanco); }
+.nav-cta {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .82rem; font-weight:700;
+  letter-spacing: .25em; text-transform:uppercase;
+  color: var(--negro);
+  background: var(--blanco);
+  padding: .5rem 1.6rem;
+  text-decoration:none;
+  transition: background .2s, color .2s;
+}
+.nav-cta:hover { background: var(--rosa); color: var(--blanco); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  background: var(--negro);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 5vw 8rem;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--linea);
+}
+
+/* textura sutil tipo pared estucada */
+#hero::before {
+  content:'';
+  position:absolute; inset:0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23D4006B'/%3E%3Ccircle cx='1' cy='1' r='.5' fill='%23ffffff' opacity='.025'/%3E%3C/svg%3E");
+  background-size: 4px 4px;
+  pointer-events:none;
+}
+
+/* acento de color sutil */
+.hero-acento {
+  position:absolute;
+  bottom:0; left:0; right:0; height:4px;
+  background: var(--rosa);
+}
+
+.hero-top {
+  position:absolute; top:0; left:0; right:0;
+  padding: 7rem 5vw 0;
+  display:flex; justify-content:space-between; align-items:flex-start;
+}
+.hero-top-desde {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .75rem; font-weight:600;
+  letter-spacing: .55em; text-transform:uppercase;
+  color: rgba(245,240,232,.3);
+}
+.hero-top-ciudad {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .75rem; font-weight:600;
+  letter-spacing: .55em; text-transform:uppercase;
+  color: rgba(245,240,232,.3);
+  text-align:right;
+}
+
+.hero-h {
+  position:relative; z-index:1;
+}
+
+/* línea 1: "A SU SERVICIO DESDE 1959" — tipo la referencia */
+.hero-linea0 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(.75rem, 1.2vw, 1rem);
+  font-weight: 600;
+  letter-spacing: .55em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,.4);
+  display: block;
+  margin-bottom: .8rem;
+}
+
+/* TAQUERÍA — grande, serif condensed */
+.hero-linea1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--blanco);
+  display: block;
+  line-height: 1;
+}
+
+/* MARÍA — enorme, el protagonista, serif itálico como el letrero */
+.hero-linea2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: clamp(6rem, 16vw, 17rem);
+  line-height: .85;
+  color: var(--blanco);
+  display: block;
+  letter-spacing: -.01em;
+}
+
+/* línea fina debajo tipo "Lonas y letreros" */
+.hero-linea3 {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-size: clamp(.9rem, 1.5vw, 1.2rem);
+  color: rgba(245,240,232,.4);
+  display: block;
+  margin-top: 1.2rem;
+  letter-spacing: .04em;
+}
+
+.hero-btns {
+  display:flex; gap:1rem; flex-wrap:wrap;
+  margin-top: 3.5rem; position:relative; z-index:1;
+}
+.btn-b {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .9rem; font-weight:700;
+  letter-spacing: .3em; text-transform:uppercase;
+  background: var(--blanco);
+  color: var(--negro);
+  padding: .9rem 2.8rem;
+  text-decoration:none;
+  transition: background .2s, color .2s;
+  display:inline-block;
+}
+.btn-b:hover { background: var(--rosa); color: var(--blanco); }
+.btn-g {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .9rem; font-weight:700;
+  letter-spacing: .3em; text-transform:uppercase;
+  background: transparent;
+  color: rgba(245,240,232,.5);
+  padding: .9rem 2.8rem;
+  text-decoration:none;
+  border: 1px solid rgba(245,240,232,.2);
+  transition: border-color .2s, color .2s;
+  display:inline-block;
+}
+.btn-g:hover { border-color:var(--blanco); color:var(--blanco); }
+
+/* ── MARQUESINA ── */
+.marq {
+  background: var(--blanco);
+  border-top: none;
+  padding: .6rem 0; overflow:hidden;
+}
+.marq-track {
+  display:inline-flex;
+  animation: mrun 24s linear infinite;
+  white-space:nowrap;
+}
+@keyframes mrun { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.mi {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .85rem; font-weight:700;
+  letter-spacing: .35em; text-transform:uppercase;
+  color: var(--negro); padding:0 2rem;
+}
+.ms { color: var(--rosa); padding:0 .3rem; font-size:.7rem; }
+
+/* ── SECCIONES: helpers ── */
+.s-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .72rem; font-weight:700;
+  letter-spacing: .5em; text-transform:uppercase;
+  color: rgba(245,240,232,.3);
+  display:block; margin-bottom:.8rem;
+}
+.s-h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(3rem,5vw,5.5rem);
+  line-height: .9; letter-spacing:-.01em;
+  color: var(--blanco);
+  margin-bottom: 1.5rem;
+}
+.s-h2 em { font-style:italic; }
+.s-hr { width:40px; height:1px; background:var(--rosa); margin-bottom:1.8rem; }
+.s-body {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem; font-weight:300;
+  line-height:1.85; letter-spacing:.03em;
+  color: rgba(245,240,232,.45);
+}
+
+/* ── NOSOTROS ── */
+#nosotros {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--linea);
+}
+
+.nos-visual {
+  background: var(--gris);
+  border-right: 1px solid var(--linea);
+  display:flex; align-items:center; justify-content:center;
+  min-height:600px; padding:5rem 4rem;
+  position:relative; overflow:hidden;
+}
+/* texto gigante de año */
+.nos-ybg {
+  position:absolute;
+  font-family: 'Playfair Display', serif;
+  font-weight:900; font-style:italic;
+  font-size: 20rem; line-height:1;
+  color: rgba(245,240,232,.03);
+  bottom:-3rem; left:-1rem;
+  user-select:none; white-space:nowrap;
+  pointer-events:none;
+}
+
+.nos-centro {
+  position:relative; z-index:1;
+  text-align:center;
+}
+.nos-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .72rem; font-weight:700;
+  letter-spacing: .55em; text-transform:uppercase;
+  color: rgba(245,240,232,.25);
+  margin-bottom:2rem;
+}
+.nos-name {
+  font-family: 'Playfair Display', serif;
+  font-weight:900;
+  font-size: 7rem; line-height:.85;
+  color: var(--blanco);
+}
+.nos-name em { font-style:italic; color:rgba(245,240,232,.55); }
+.nos-sep {
+  width:30px; height:1px;
+  background: rgba(245,240,232,.25);
+  margin:1.5rem auto;
+}
+.nos-sub {
+  font-family: 'Libre Baskerville', serif;
+  font-style:italic;
+  font-size: 1rem;
+  color: rgba(245,240,232,.25);
+  letter-spacing:.06em;
+}
+
+.nos-texto {
+  padding:7rem 5vw;
+  background:var(--negro);
+  display:flex; flex-direction:column; justify-content:center;
+}
+.nos-texto .s-body + .s-body { margin-top:1.2rem; }
+
+/* ── MENÚ ── */
+#menu { border-bottom: 1px solid var(--linea); }
+.menu-top {
+  padding:5.5rem 5vw 3.5rem;
+  border-bottom:1px solid var(--linea);
+  display:flex; align-items:flex-end; justify-content:space-between; gap:2rem;
+}
+.menu-top .s-h2 { margin-bottom:0; }
+
+.menu-lista {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+}
+.mrow {
+  padding:3rem 5vw;
+  border-right:1px solid var(--linea);
+  border-bottom:1px solid var(--linea);
+  display:flex; gap:2.5rem; align-items:flex-start;
+  transition:background .2s; cursor:default;
+}
+.mrow:hover { background: rgba(245,240,232,.02); }
+.mrow:nth-child(even) { border-right:none; }
+
+.mrow-n {
+  font-family: 'Playfair Display', serif;
+  font-weight:900; font-style:italic;
+  font-size: 3.5rem; line-height:1;
+  color: rgba(245,240,232,.06);
+  flex-shrink:0; width:2.8rem; text-align:right;
+  margin-top:-.3rem;
+}
+.mrow-info { flex:1; }
+.mrow-nombre {
+  font-family: 'Libre Baskerville', serif;
+  font-weight:700;
+  font-size: 1.3rem; letter-spacing:.01em;
+  color: var(--blanco);
+  margin-bottom:.4rem;
+}
+.mrow-desc {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .9rem; font-weight:300;
+  color: rgba(245,240,232,.35);
+  line-height:1.7; letter-spacing:.03em;
+  margin-bottom:.9rem;
+}
+.mrow-precio {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .85rem; font-weight:700;
+  letter-spacing:.25em; text-transform:uppercase;
+  color: var(--rosa);
+}
+
+/* ── FRASE ── */
+.frase {
+  padding:8rem 5vw;
+  border-bottom:1px solid var(--linea);
+  text-align:center;
+  position:relative; overflow:hidden;
+}
+.frase::before {
+  content:'';
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 50% 50%,
+      rgba(232,23,107,.05) 0%,
+      transparent 65%);
+}
+.frase-txt {
+  font-family: 'Playfair Display', serif;
+  font-weight:900; font-style:italic;
+  font-size: clamp(3.5rem,8vw,9rem);
+  line-height:.88; color: var(--blanco);
+  position:relative; z-index:1;
+  letter-spacing:-.01em;
+}
+.frase-txt .pink { color: var(--rosa); font-style:normal; }
+.frase-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .78rem; font-weight:600;
+  letter-spacing:.5em; text-transform:uppercase;
+  color: rgba(245,240,232,.25);
+  margin-top:2rem; position:relative; z-index:1;
+}
+
+/* ── GALERÍA ── */
+#galeria {
+  display:grid;
+  grid-template-columns: repeat(4,1fr);
+  border-bottom:1px solid var(--linea);
+}
+.gcol {
+  aspect-ratio:1;
+  border-right:1px solid var(--linea);
+  background:var(--gris);
+  display:flex; flex-direction:column;
+  justify-content:flex-end; padding:1.8rem;
+  position:relative; overflow:hidden;
+  cursor:default; transition:background .3s;
+}
+.gcol:last-child { border-right:none; }
+.gcol:hover { background:var(--gris2); }
+
+.gcol-nbg {
+  position:absolute; top:-.8rem; left:.5rem;
+  font-family:'Playfair Display',serif;
+  font-weight:900; font-style:italic;
+  font-size:9rem; line-height:1;
+  color:rgba(245,240,232,.03);
+  user-select:none; pointer-events:none;
+}
+.gcol-label {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.7rem; font-weight:700;
+  letter-spacing:.4em; text-transform:uppercase;
+  color:rgba(245,240,232,.25);
+  margin-bottom:.3rem;
+  position:relative; z-index:1;
+  transition:color .25s;
+}
+.gcol:hover .gcol-label { color:rgba(245,240,232,.5); }
+.gcol-titulo {
+  font-family:'Libre Baskerville',serif;
+  font-weight:700; font-style:italic;
+  font-size:1.7rem;
+  color:rgba(245,240,232,.5);
+  position:relative; z-index:1;
+  transition:color .25s;
+}
+.gcol:hover .gcol-titulo { color:var(--blanco); }
+/* línea rosa en hover */
+.gcol::after {
+  content:''; position:absolute;
+  bottom:0; left:0; right:0; height:2px;
+  background:var(--rosa);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .3s;
+}
+.gcol:hover::after { transform:scaleX(1); }
+
+/* ── UBICACIÓN ── */
+#ubicacion {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border-bottom:1px solid var(--linea);
+}
+.ubi-izq {
+  padding:6rem 5vw;
+  border-right:1px solid var(--linea);
+  display:flex; flex-direction:column; justify-content:center;
+}
+.suc {
+  padding:1.5rem 0;
+  border-bottom:1px solid var(--linea);
+}
+.suc:last-of-type { border-bottom:none; }
+.suc-etq {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.7rem; font-weight:700;
+  letter-spacing:.45em; text-transform:uppercase;
+  color:var(--rosa); display:block; margin-bottom:.4rem;
+}
+.suc-nom {
+  font-family:'Libre Baskerville',serif;
+  font-weight:700; font-style:italic;
+  font-size:1.2rem; color:var(--blanco);
+  margin-bottom:.25rem;
+}
+.suc-dir {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.88rem; font-weight:300;
+  color:rgba(245,240,232,.3);
+  letter-spacing:.03em; line-height:1.65;
+}
+.hor {
+  margin-top:2.5rem; padding-top:2rem;
+  border-top:1px solid var(--linea);
+}
+.hor-etq {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.7rem; font-weight:700;
+  letter-spacing:.45em; text-transform:uppercase;
+  color:rgba(245,240,232,.3); display:block; margin-bottom:.5rem;
+}
+.hor-val {
+  font-family:'Playfair Display',serif;
+  font-weight:900; font-style:italic;
+  font-size:2.2rem; line-height:1.05;
+  color:var(--blanco);
+}
+
+.ubi-der {
+  background:var(--gris);
+  display:flex; align-items:center; justify-content:center;
+  min-height:480px; position:relative; overflow:hidden;
+}
+.ubi-der::before {
+  content:'';
+  position:absolute; inset:0;
+  background:
+    repeating-linear-gradient(0deg,
+      transparent 0,transparent 49px,
+      rgba(245,240,232,.03) 49px,rgba(245,240,232,.03) 50px),
+    repeating-linear-gradient(90deg,
+      transparent 0,transparent 49px,
+      rgba(245,240,232,.03) 49px,rgba(245,240,232,.03) 50px);
+}
+.mapa-inner {
+  position:relative; z-index:1;
+  text-align:center;
+  display:flex; flex-direction:column; align-items:center; gap:1.5rem;
+}
+.mapa-cruz { width:60px; height:60px; position:relative; }
+.mapa-cruz::before {
+  content:''; position:absolute;
+  top:50%; left:0; right:0; height:1px;
+  background:rgba(245,240,232,.3);
+  transform:translateY(-50%);
+}
+.mapa-cruz::after {
+  content:''; position:absolute;
+  left:50%; top:0; bottom:0; width:1px;
+  background:rgba(245,240,232,.3);
+  transform:translateX(-50%);
+}
+.mapa-dot {
+  width:12px; height:12px; border-radius:50%;
+  background:var(--rosa);
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  animation:pulso 2.2s ease-in-out infinite;
+}
+@keyframes pulso {
+  0%,100%{ box-shadow:0 0 0 0 rgba(232,23,107,.4); }
+  50%{ box-shadow:0 0 0 12px rgba(232,23,107,0); }
+}
+.mapa-ciudad {
+  font-family:'Playfair Display',serif;
+  font-weight:900; font-style:italic;
+  font-size:2.5rem; color:var(--blanco);
+  letter-spacing:-.01em;
+}
+.mapa-estado {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.75rem; font-weight:600;
+  letter-spacing:.45em; text-transform:uppercase;
+  color:rgba(245,240,232,.25);
+}
+
+/* ── INSTAGRAM ── */
+#instagram { border-bottom:1px solid var(--linea); }
+.ig-top {
+  padding:4.5rem 5vw 3rem;
+  border-bottom:1px solid var(--linea);
+  display:flex; align-items:flex-end; justify-content:space-between; gap:2rem;
+}
+.ig-top .s-h2 { margin-bottom:0; }
+.ig-grid {
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+}
+.igc {
+  aspect-ratio:1;
+  border-right:1px solid var(--linea);
+  border-bottom:1px solid var(--linea);
+  background:var(--negro);
+  display:flex; align-items:center; justify-content:center;
+  cursor:default; overflow:hidden; position:relative;
+  transition:background .25s;
+}
+.igc:last-child { border-right:none; }
+.igc span {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.75rem; font-weight:700;
+  letter-spacing:.3em; text-transform:uppercase;
+  color:rgba(245,240,232,.1);
+  transition:color .2s; text-align:center; padding:.5rem;
+}
+.igc:hover { background:var(--gris); }
+.igc:hover span { color:rgba(245,240,232,.5); }
+.igc::after {
+  content:''; position:absolute;
+  bottom:0; left:0; right:0; height:2px;
+  background:var(--rosa);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .25s;
+}
+.igc:hover::after { transform:scaleX(1); }
+
+/* ── FOOTER ── */
+footer {
+  background:var(--negro);
+  padding:4rem 5vw 3.5rem;
+  border-top:1px solid var(--linea);
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:3rem; align-items:start;
+}
+.ft-logo {
+  font-family:'Playfair Display',serif;
+  font-weight:900; font-style:italic;
+  font-size:1.8rem; color:var(--blanco);
+  letter-spacing:-.01em; line-height:1;
+}
+.ft-desde {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.7rem; font-weight:600;
+  letter-spacing:.45em; text-transform:uppercase;
+  color:rgba(245,240,232,.2); margin-top:.5rem;
+}
+.ft-nav { display:flex; flex-direction:column; gap:.7rem; }
+.ft-nav a {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.82rem; font-weight:600;
+  letter-spacing:.25em; text-transform:uppercase;
+  color:rgba(245,240,232,.3);
+  text-decoration:none; transition:color .2s;
+}
+.ft-nav a:hover { color:var(--blanco); }
+.ft-copy {
+  text-align:right; align-self:flex-end;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+  color:rgba(245,240,232,.15); line-height:1.9;
+}
+/* barra rosa bottom */
+.ft-barra {
+  grid-column:1/-1;
+  height:2px; background:var(--rosa);
+  margin-top:2rem; opacity:.4;
+}
+
+/* ── REVEAL ── */
+.rev { opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s ease; }
+.rev.vis { opacity:1; transform:translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  #nosotros,#ubicacion { grid-template-columns:1fr; }
+  .nos-visual { min-height:280px; border-right:none; border-bottom:1px solid var(--linea); }
+  .ubi-izq { border-right:none; border-bottom:1px solid var(--linea); }
+  .ubi-der { min-height:280px; }
+  #galeria { grid-template-columns:1fr 1fr; }
+  .menu-lista { grid-template-columns:1fr; }
+  .mrow { border-right:none; }
+  .ig-grid { grid-template-columns:repeat(3,1fr); }
+  nav ul { display:none; }
+  footer { grid-template-columns:1fr; }
+  .ft-copy { text-align:left; }
+  .hero-h1 { font-size:clamp(5rem,18vw,9rem); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">Taqueria María <em>desde 1959</em></a>
+  <ul>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#menu">Menú</a></li>
+    <li><a href="#ubicacion">Sucursales</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+  </ul>
+  <a href="https://bit.ly/3AG2qic" target="_blank" class="nav-cta">A Domicilio</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-top">
+    <span class="hero-top-desde"></span>
+    <span class="hero-top-ciudad">Monterrey, Nuevo León</span>
+  </div>
+
+  <div class="hero-h">
+    <span class="hero-linea0">Pozole y Antojitos Mexicanos</span>
+    <span class="hero-linea1">Taqueria</span>
+    <span class="hero-linea2">María</span>
+    <span class="hero-linea3">Aquí se cocina con el corazón desde 1959 — Monterrey, N.L.</span>
+  </div>
+
+  <div class="hero-btns">
+    <a href="#menu" class="btn-b">Ver Menú</a>
+    <a href="#ubicacion" class="btn-g">Encuéntranos</a>
+  </div>
+
+  <div class="hero-acento"></div>
+</section>
+
+<!-- MARQUESINA -->
+<div class="marq">
+  <div class="marq-track">
+    <span class="mi">Pozole</span><span class="ms">·</span>
+    <span class="mi">Sopes</span><span class="ms">·</span>
+    <span class="mi">Tostadas</span><span class="ms">·</span>
+    <span class="mi">Tacos Dorados</span><span class="ms">·</span>
+    <span class="mi">Aquí se come rico</span><span class="ms">·</span>
+    <span class="mi">Enchiladas</span><span class="ms">·</span>
+    <span class="mi">Flautas</span><span class="ms">·</span>
+    <span class="mi">Aguas Frescas</span><span class="ms">·</span>
+    <span class="mi">Antojitos hechos con el corazón</span><span class="ms">·</span>
+    <span class="mi">Pozole</span><span class="ms">·</span>
+    <span class="mi">Sopes</span><span class="ms">·</span>
+    <span class="mi">Tostadas</span><span class="ms">·</span>
+    <span class="mi">Tacos Dorados</span><span class="ms">·</span>
+    <span class="mi">Aquí se come rico</span><span class="ms">·</span>
+    <span class="mi">Enchiladas</span><span class="ms">·</span>
+    <span class="mi">Flautas</span><span class="ms">·</span>
+    <span class="mi">Aguas Frescas</span><span class="ms">·</span>
+    <span class="mi">Antojitos hechos con el corazón</span><span class="ms">·</span>
+  </div>
+</div>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="nos-visual rev">
+    <div class="nos-ybg">1959</div>
+    <div class="nos-centro">
+      <div class="nos-eyebrow">✦ Taquería María ✦</div>
+      <div class="nos-name">MA<br><em>RÍA</em></div>
+      <div class="nos-sep"></div>
+      <div class="nos-sub">Monterrey, N.L. · 1959</div>
+    </div>
+  </div>
+
+  <div class="nos-texto rev">
+    <span class="s-label">Nuestra Historia</span>
+    <h2 class="s-h2">Aquí se cocina<br>con el <em>corazón.</em></h2>
+    <div class="s-hr"></div>
+    <p class="s-body">
+      TAQUERÍA MARÍA — TRADICIÓN DEL BARRIO
+
+      </p>
+    <p class="s-body" style="margin-top:1.2rem;">
+      A su servicio desde 1959.
+    </p>
+
+    </p>
+    <p class="s-body" style="margin-top:1.2rem;">
+      Todo comenzó con un comal. 
+    </p>
+                                         
+En 1959, Doña María de la Cruz Hurtado emprendió su negocio de antojitos en la Colonia Nuevo Repueblo, al centro de Monterrey — empezando con tan solo un comal.
+Con los años, sus antojitos se ganaron el cariño del barrio. Y cuando el pozole llegó al menú, también se volvió consentido. Doña María cocinaba con una sazón que no se aprende: se hereda.
+Aunque ella ya no está entre nosotros, su descendencia se ha encargado de mantener vivas sus recetas, su sazón y todo lo que ella representó.
+Esto es esfuerzo y amor heredado por generaciones. Anhelando que el trabajo de nuestras manos — y de quienes estuvieron antes que nosotros — llegue cada vez más lejos. Que se conozca, que se valore y que se honre.
+Queremos que quien llegue a nuestra mesa se sienta como en casa. Que se vaya con el alma y el estómago llenitos.
+
+Aquí seguimos cocinando con el corazón — desde 1959.
+    </p>
+    <p class="s-body" style="margin-top:1.2rem;">
+      Hoy, 68 años después, seguimos cocinando las mismas recetas, con el mismo amor y sabor de siempre. 
+      Dos sucursales en Monterrey, un solo sabor.
+    </p>
+    <a href="#menu" class="btn-b" style="margin-top:2.5rem;display:inline-block;">Ver el Menú</a>
+  </div>
+</section>
+
+<!-- MENÚ -->
+<section id="menu">
+  <div class="menu-top rev">
+    <div>
+      <span class="s-label">Pozole y Antojitos Mexicanos</span>
+      <h2 class="s-h2">Nuestro <em>Menú</em></h2>
+    </div>
+    <a href="https://bit.ly/3AG2qic" target="_blank" class="btn-g">A Domicilio</a>
+  </div>
+  <div class="menu-lista">
+    <div class="mrow rev">
+      <div class="mrow-n">01</div>
+      <div class="mrow-info">
+        <div class="mrow-nombre">Pozole</div>
+        <div class="mrow-desc">Rojo de puerco. La especialidad de la casa.</div>
+        <div class="mrow-precio">Chico $100 / Grande $145</div>
+      </div>
+    </div>
+    <div class="mrow rev">
+      <div class="mrow-n">02</div>
+      <div class="mrow-info">
+        <div class="mrow-nombre">Tacos Dorados</div>
+        <div class="mrow-desc">Deshebrada, picadillo, papa con queso y pollo.</div>
+        <div class="mrow-precio">$30 c/u</div>
+      </div>
+    </div>
+      <div class="mrow rev">
+      <div class="mrow-n">06</div>
+      <div class="mrow-info">
+        <div class="mrow-nombre">Enchiladas rojas</div>
+        <div class="mrow-desc">De queso fresco</div>
+        <div class="mrow-precio">$130</div>
+      </div>
+    </div>  
+    <div class="mrow rev">
+      <div class="mrow-n">07</div>
+      <div class="mrow-info">
+        <div class="mrow-nombre">Flautas</div>
+        <div class="mrow-desc">De carne deshebrada de res.</div>
+        <div class="mrow-precio">$130</div>
+      </div>
+    </div>
+    <div class="mrow rev">
+      <div class="mrow-n">03</div>
+      <div class="mrow-info">
+        <div class="mrow-nombre">Sopes</div>
+        <div class="mrow-desc">Hechas a mano con masa de maíz. Deshebrada, chicharrón, picadillo ó pollo.</div>
+        <div class="mrow-precio">$45 c/u</div>
+      </div>
+    </div>
+    <div class="mrow rev">
+      <div class="mrow-n">04</div>
+      <div class="mrow-info">
+        <div class="mrow-nombre">Tostadas</div>
+        <div class="mrow-desc">Deshebrada ó pollo.</div>
+        <div class="mrow-precio">$45 c/u</div>
+      </div>
+    </div>
+    <div class="mrow rev">
+      <div class="mrow-n">05</div>
+      <div class="mrow-info">
+        <div class="mrow-nombre">Aguas Frescas</div>
+        <div class="mrow-desc">Jamaica, horchata y tamarindo. Preparadas fresquitas cada mañana.</div>
+        <div class="mrow-precio">$30</div>
+       </div>
+  </div>
+</section>
+
+<!-- FRASE -->
+<div class="frase">
+  <div class="frase-txt rev">
+    Aquí se<br>come <span class="pink">rico.</span>
+  </div>
+  <div class="frase-sub rev">@taqueriamaria1959 — Monterrey, N.L.</div>
+</div>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="gcol rev">
+    <div class="gcol-nbg">1</div>
+    <span class="gcol-label">Especialidad</span>
+    <div class="gcol-titulo">Pozole rojo de puerco</div>
+  </div>
+  <div class="gcol rev">
+    <div class="gcol-nbg">2</div>
+    <span class="gcol-label">Dorados</span>
+    <div class="gcol-titulo">Tacos</div>
+  </div>
+  <div class="gcol rev">
+    <div class="gcol-nbg">3</div>
+    <span class="gcol-label">Hechos a mano</span>
+    <div class="gcol-titulo">Sopes</div>
+  </div>
+  <div class="gcol rev">
+    <div class="gcol-nbg">4</div>
+    <span class="gcol-label">Deshebrada / pollo</span>
+    <div class="gcol-titulo">Tostadas</div>
+     </div>
+  <div class="gcol rev">
+    <div class="gcol-nbg">5</div>
+    <span class="gcol-label">De queso fresco</span>
+    <div class="gcol-titulo">Enchiladas</div>
+     </div>
+  <div class="gcol rev">
+    <div class="gcol-nbg">6</div>
+    <span class="gcol-label">De carne deshebrada</span>
+    <div class="gcol-titulo">Flautas</div>
+  </div>
+</section>
+
+<!-- UBICACIÓN -->
+<section id="ubicacion">
+  <div class="ubi-izq rev">
+    <span class="s-label">Sucursales</span>
+    <h2 class="s-h2">Dos lugares,<br><em>un sabor.</em></h2>
+    <div class="s-hr"></div>
+    <div class="suc">
+      <span class="suc-etq">Sucursal Matriz</span>
+      <div class="suc-nom">Nuevo Repueblo</div>
+      <div class="suc-dir">Iguala 1208, Nuevo Repueblo <br>Monterrey, Nuevo León <br>Telefono: 81 8190 3385</div>
+    </div>
+    <div class="suc">
+      <span class="suc-etq">Sucursal</span>
+      <div class="suc-nom">Tec</div>
+      <div class="suc-dir">Avenida Junco de la Vega 300, Alta vista <br>Monterrey, Nuevo León <br>Telefono: 81 2349 6657</div>
+    </div>
+    <div class="hor">
+      <span class="hor-etq">Le antendemos de</span>
+      <div class="hor-val">Martes a Domingo<br>de 12 pm a 10 pm.</div>
+    </div>
+    <a href="https://bit.ly/3AG2qic" target="_blank" class="btn-b" style="margin-top:2.5rem;display:inline-block;">Abrir Mapa</a>
+  </div>
+
+  <div class="ubi-der rev">
+    <div class="mapa-inner">
+      <div class="mapa-cruz"><div class="mapa-dot"></div></div>
+      <div class="mapa-ciudad">Monterrey</div>
+      <div class="mapa-estado">Nuevo León · México</div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section id="instagram">
+  <div class="ig-top rev">
+    <div>
+      <span class="s-label">Síguenos</span>
+      <h2 class="s-h2">@taqueria<em>maria1959</em></h2>
+    </div>
+    <a href="https://instagram.com/taqueriamaria1959" target="_blank" class="btn-b">Seguir</a>
+  </div>
+  <div class="ig-grid">
+    <div class="igc"><span>Pozole</span></div>
+        <div class="igc"><span>Enchiladas</span></div>
+    <div class="igc"><span>Flautas</span></div>
+    <div class="igc"><span>Tacos Dorados</span></div>
+    <div class="igc"><span>Sopes</span></div>
+    <div class="igc"><span>Tostadas</span></div>
+    <div class="igc"><span>Tradición</span></div>
+    <div class="igc"><span>Familia</span></div>
+    <div class="igc"><span>1959</span></div>
+    <div class="igc"><span>Sabor</span></div>
+    <div class="igc"><span>Monterrey</span></div>
+    <div class="igc"><span>Amor</span></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="ft-logo">Taqueria <em>María</em></div>
+    <div class="ft-desde">Desde 1959 · Monterrey, N.L.</div>
+  </div>
+  <div class="ft-nav">
+    <a href="#nosotros">Nosotros</a>
+    <a href="#menu">Menú</a>
+    <a href="#ubicacion">Sucursales</a>
+    <a href="https://instagram.com/taqueriamaria1959" target="_blank">Instagram</a>
+    <a href="https://bit.ly/3AG2qic" target="_blank">A Domicilio</a>
+  </div>
+  <div class="ft-copy">
+    © Taqueria María 2026<br>
+    Monterrey, Nuevo León<br>
+    Todos los derechos reservados.
+  </div>
+  <div class="ft-barra"></div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('on', window.scrollY > 50);
+});
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => {
+    if(e.isIntersecting) setTimeout(()=>e.target.classList.add('vis'), i*70);
+  });
+}, {threshold:.08});
+document.querySelectorAll('.rev').forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>

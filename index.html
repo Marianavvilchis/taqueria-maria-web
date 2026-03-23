@@ -13,7 +13,7 @@
   --gris:   #B8005C;
   --gris2:  #A80054;
   --rosa:   #FFE000;
-  --linea:  rgba(255,255,255,.15);
+  --linea:  rgba(255,255,255,.08);
 }
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -35,7 +35,6 @@ nav {
 }
 nav.on {
   background: rgba(212,0,107,.97);
-  border-bottom: 1px solid var(--linea);
   backdrop-filter: blur(8px);
 }
 .logo {
@@ -53,7 +52,7 @@ nav ul a {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: .82rem; font-weight:600;
   letter-spacing: .35em; text-transform:uppercase;
-  color: rgba(245,240,232,.45);
+  color: rgba(245,240,232,1);
   text-decoration:none; transition:color .2s;
 }
 nav ul a:hover { color: var(--blanco); }
@@ -82,7 +81,6 @@ nav ul a:hover { color: var(--blanco); }
   border-bottom: 1px solid var(--linea);
 }
 
-/* textura sutil tipo pared estucada */
 #hero::before {
   content:'';
   position:absolute; inset:0;
@@ -92,7 +90,6 @@ nav ul a:hover { color: var(--blanco); }
   pointer-events:none;
 }
 
-/* acento de color sutil */
 .hero-acento {
   position:absolute;
   bottom:0; left:0; right:0; height:4px;
@@ -108,13 +105,13 @@ nav ul a:hover { color: var(--blanco); }
   font-family: 'Barlow Condensed', sans-serif;
   font-size: .75rem; font-weight:600;
   letter-spacing: .55em; text-transform:uppercase;
-  color: rgba(245,240,232,.3);
+  color: rgba(245,240,232,1);
 }
 .hero-top-ciudad {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: .75rem; font-weight:600;
   letter-spacing: .55em; text-transform:uppercase;
-  color: rgba(245,240,232,.3);
+  color: rgba(245,240,232,1);
   text-align:right;
 }
 
@@ -122,19 +119,17 @@ nav ul a:hover { color: var(--blanco); }
   position:relative; z-index:1;
 }
 
-/* línea 1: "A SU SERVICIO DESDE 1959" — tipo la referencia */
 .hero-linea0 {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: clamp(.75rem, 1.2vw, 1rem);
   font-weight: 600;
   letter-spacing: .55em;
   text-transform: uppercase;
-  color: rgba(245,240,232,.4);
+  color: rgba(245,240,232,1);
   display: block;
   margin-bottom: .8rem;
 }
 
-/* TAQUERÍA — grande, serif condensed */
 .hero-linea1 {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: clamp(2.5rem, 6vw, 6rem);
@@ -146,7 +141,6 @@ nav ul a:hover { color: var(--blanco); }
   line-height: 1;
 }
 
-/* MARÍA — enorme, el protagonista, serif itálico como el letrero */
 .hero-linea2 {
   font-family: 'Playfair Display', serif;
   font-weight: 900;
@@ -158,12 +152,11 @@ nav ul a:hover { color: var(--blanco); }
   letter-spacing: -.01em;
 }
 
-/* línea fina debajo tipo "Lonas y letreros" */
 .hero-linea3 {
   font-family: 'Libre Baskerville', serif;
   font-style: italic;
   font-size: clamp(.9rem, 1.5vw, 1.2rem);
-  color: rgba(245,240,232,.4);
+  color: rgba(245,240,232,1);
   display: block;
   margin-top: 1.2rem;
   letter-spacing: .04em;
@@ -190,10 +183,10 @@ nav ul a:hover { color: var(--blanco); }
   font-size: .9rem; font-weight:700;
   letter-spacing: .3em; text-transform:uppercase;
   background: transparent;
-  color: rgba(245,240,232,.5);
+  color: rgba(245,240,232,1);
   padding: .9rem 2.8rem;
   text-decoration:none;
-  border: 1px solid rgba(245,240,232,.2);
+  border: 1px solid rgba(245,240,232,1);
   transition: border-color .2s, color .2s;
   display:inline-block;
 }
@@ -224,7 +217,7 @@ nav ul a:hover { color: var(--blanco); }
   font-family: 'Barlow Condensed', sans-serif;
   font-size: .72rem; font-weight:700;
   letter-spacing: .5em; text-transform:uppercase;
-  color: rgba(245,240,232,.3);
+  color: rgba(245,240,232,1);  /* CAMBIADO: era .3 */
   display:block; margin-bottom:.8rem;
 }
 .s-h2 {
@@ -241,7 +234,7 @@ nav ul a:hover { color: var(--blanco); }
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.05rem; font-weight:300;
   line-height:1.85; letter-spacing:.03em;
-  color: rgba(245,240,232,.45);
+  color: rgba(245,240,232,1);  /* CAMBIADO: era .45 */
 }
 
 /* ── NOSOTROS ── */
@@ -258,13 +251,12 @@ nav ul a:hover { color: var(--blanco); }
   min-height:600px; padding:5rem 4rem;
   position:relative; overflow:hidden;
 }
-/* texto gigante de año */
 .nos-ybg {
   position:absolute;
   font-family: 'Playfair Display', serif;
   font-weight:900; font-style:italic;
   font-size: 20rem; line-height:1;
-  color: rgba(245,240,232,.03);
+  color: rgba(245,240,232,1);
   bottom:-3rem; left:-1rem;
   user-select:none; white-space:nowrap;
   pointer-events:none;
@@ -278,7 +270,7 @@ nav ul a:hover { color: var(--blanco); }
   font-family: 'Barlow Condensed', sans-serif;
   font-size: .72rem; font-weight:700;
   letter-spacing: .55em; text-transform:uppercase;
-  color: rgba(245,240,232,.25);
+  color: rgba(245,240,232,1);
   margin-bottom:2rem;
 }
 .nos-name {
@@ -287,17 +279,17 @@ nav ul a:hover { color: var(--blanco); }
   font-size: 7rem; line-height:.85;
   color: var(--blanco);
 }
-.nos-name em { font-style:italic; color:rgba(245,240,232,.55); }
+.nos-name em { font-style:italic; color:rgba(245,240,232,1); }
 .nos-sep {
   width:30px; height:1px;
-  background: rgba(245,240,232,.25);
+  background: rgba(245,240,232,1);
   margin:1.5rem auto;
 }
 .nos-sub {
   font-family: 'Libre Baskerville', serif;
   font-style:italic;
   font-size: 1rem;
-  color: rgba(245,240,232,.25);
+  color: rgba(245,240,232,1);
   letter-spacing:.06em;
 }
 
@@ -328,14 +320,14 @@ nav ul a:hover { color: var(--blanco); }
   display:flex; gap:2.5rem; align-items:flex-start;
   transition:background .2s; cursor:default;
 }
-.mrow:hover { background: rgba(245,240,232,.02); }
+.mrow:hover { background: rgba(245,240,232,1); }
 .mrow:nth-child(even) { border-right:none; }
 
 .mrow-n {
   font-family: 'Playfair Display', serif;
   font-weight:900; font-style:italic;
   font-size: 3.5rem; line-height:1;
-  color: rgba(245,240,232,.06);
+  color: rgba(245,240,232,1);  /* CAMBIADO: era .06 */
   flex-shrink:0; width:2.8rem; text-align:right;
   margin-top:-.3rem;
 }
@@ -350,7 +342,7 @@ nav ul a:hover { color: var(--blanco); }
 .mrow-desc {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: .9rem; font-weight:300;
-  color: rgba(245,240,232,.35);
+  color: rgba(245,240,232,1);  /* CAMBIADO: era .35 */
   line-height:1.7; letter-spacing:.03em;
   margin-bottom:.9rem;
 }
@@ -389,7 +381,7 @@ nav ul a:hover { color: var(--blanco); }
   font-family: 'Barlow Condensed', sans-serif;
   font-size: .78rem; font-weight:600;
   letter-spacing:.5em; text-transform:uppercase;
-  color: rgba(245,240,232,.25);
+  color: rgba(245,240,232,1);
   margin-top:2rem; position:relative; z-index:1;
 }
 
@@ -416,29 +408,28 @@ nav ul a:hover { color: var(--blanco); }
   font-family:'Playfair Display',serif;
   font-weight:900; font-style:italic;
   font-size:9rem; line-height:1;
-  color:rgba(245,240,232,.03);
+  color:rgba(245,240,232,1);
   user-select:none; pointer-events:none;
 }
 .gcol-label {
   font-family:'Barlow Condensed',sans-serif;
   font-size:.7rem; font-weight:700;
   letter-spacing:.4em; text-transform:uppercase;
-  color:rgba(245,240,232,.25);
+  color:rgba(245,240,232,1);
   margin-bottom:.3rem;
   position:relative; z-index:1;
   transition:color .25s;
 }
-.gcol:hover .gcol-label { color:rgba(245,240,232,.5); }
+.gcol:hover .gcol-label { color:rgba(245,240,232,1); }
 .gcol-titulo {
   font-family:'Libre Baskerville',serif;
   font-weight:700; font-style:italic;
   font-size:1.7rem;
-  color:rgba(245,240,232,.5);
+  color:rgba(245,240,232,1);
   position:relative; z-index:1;
   transition:color .25s;
 }
 .gcol:hover .gcol-titulo { color:var(--blanco); }
-/* línea rosa en hover */
 .gcol::after {
   content:''; position:absolute;
   bottom:0; left:0; right:0; height:2px;
@@ -479,18 +470,18 @@ nav ul a:hover { color: var(--blanco); }
 .suc-dir {
   font-family:'Barlow Condensed',sans-serif;
   font-size:.88rem; font-weight:300;
-  color:rgba(245,240,232,.3);
+  color:rgba(245,240,232,1);  /* CAMBIADO: era .3 */
   letter-spacing:.03em; line-height:1.65;
 }
 .hor {
   margin-top:2.5rem; padding-top:2rem;
-  border-top:1px solid var(--linea);
 }
+
 .hor-etq {
   font-family:'Barlow Condensed',sans-serif;
   font-size:.7rem; font-weight:700;
   letter-spacing:.45em; text-transform:uppercase;
-  color:rgba(245,240,232,.3); display:block; margin-bottom:.5rem;
+  color:rgba(245,240,232,1); display:block; margin-bottom:.5rem;  /* CAMBIADO: era .3 */
 }
 .hor-val {
   font-family:'Playfair Display',serif;
@@ -524,13 +515,13 @@ nav ul a:hover { color: var(--blanco); }
 .mapa-cruz::before {
   content:''; position:absolute;
   top:50%; left:0; right:0; height:1px;
-  background:rgba(245,240,232,.3);
+  background:rgba(245,240,232,1);
   transform:translateY(-50%);
 }
 .mapa-cruz::after {
   content:''; position:absolute;
   left:50%; top:0; bottom:0; width:1px;
-  background:rgba(245,240,232,.3);
+  background:rgba(245,240,232,1);
   transform:translateX(-50%);
 }
 .mapa-dot {
@@ -554,7 +545,7 @@ nav ul a:hover { color: var(--blanco); }
   font-family:'Barlow Condensed',sans-serif;
   font-size:.75rem; font-weight:600;
   letter-spacing:.45em; text-transform:uppercase;
-  color:rgba(245,240,232,.25);
+  color:rgba(245,240,232,1);
 }
 
 /* ── INSTAGRAM ── */
@@ -583,11 +574,11 @@ nav ul a:hover { color: var(--blanco); }
   font-family:'Barlow Condensed',sans-serif;
   font-size:.75rem; font-weight:700;
   letter-spacing:.3em; text-transform:uppercase;
-  color:rgba(245,240,232,.1);
+  color:rgba(245,240,232,1);
   transition:color .2s; text-align:center; padding:.5rem;
 }
 .igc:hover { background:var(--gris); }
-.igc:hover span { color:rgba(245,240,232,.5); }
+.igc:hover span { color:rgba(245,240,232,1); }
 .igc::after {
   content:''; position:absolute;
   bottom:0; left:0; right:0; height:2px;
@@ -601,7 +592,6 @@ nav ul a:hover { color: var(--blanco); }
 footer {
   background:var(--negro);
   padding:4rem 5vw 3.5rem;
-  border-top:1px solid var(--linea);
   display:grid;
   grid-template-columns:1fr 1fr 1fr;
   gap:3rem; align-items:start;
@@ -616,14 +606,14 @@ footer {
   font-family:'Barlow Condensed',sans-serif;
   font-size:.7rem; font-weight:600;
   letter-spacing:.45em; text-transform:uppercase;
-  color:rgba(245,240,232,.2); margin-top:.5rem;
+  color:rgba(245,240,232,1); margin-top:.5rem;
 }
 .ft-nav { display:flex; flex-direction:column; gap:.7rem; }
 .ft-nav a {
   font-family:'Barlow Condensed',sans-serif;
   font-size:.82rem; font-weight:600;
   letter-spacing:.25em; text-transform:uppercase;
-  color:rgba(245,240,232,.3);
+  color:rgba(245,240,232,1);
   text-decoration:none; transition:color .2s;
 }
 .ft-nav a:hover { color:var(--blanco); }
@@ -631,9 +621,8 @@ footer {
   text-align:right; align-self:flex-end;
   font-family:'Barlow Condensed',sans-serif;
   font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
-  color:rgba(245,240,232,.15); line-height:1.9;
+  color:rgba(245,240,232,1); line-height:1.9;
 }
-/* barra rosa bottom */
 .ft-barra {
   grid-column:1/-1;
   height:2px; background:var(--rosa);
@@ -701,22 +690,20 @@ footer {
 <div class="marq">
   <div class="marq-track">
     <span class="mi">Pozole</span><span class="ms">·</span>
-    <span class="mi">Sopes</span><span class="ms">·</span>
-    <span class="mi">Tostadas</span><span class="ms">·</span>
-    <span class="mi">Tacos Dorados</span><span class="ms">·</span>
-    <span class="mi">Aquí se come rico</span><span class="ms">·</span>
     <span class="mi">Enchiladas</span><span class="ms">·</span>
     <span class="mi">Flautas</span><span class="ms">·</span>
-    <span class="mi">Aguas Frescas</span><span class="ms">·</span>
+    <span class="mi">Aquí se come rico</span><span class="ms">·</span>
+    <span class="mi">Sopes</span><span class="ms">·</span>
+    <span class="mi">Tacos</span><span class="ms">·</span>
+    <span class="mi">Tostadas</span><span class="ms">·</span>
     <span class="mi">Antojitos hechos con el corazón</span><span class="ms">·</span>
     <span class="mi">Pozole</span><span class="ms">·</span>
-    <span class="mi">Sopes</span><span class="ms">·</span>
-    <span class="mi">Tostadas</span><span class="ms">·</span>
-    <span class="mi">Tacos Dorados</span><span class="ms">·</span>
-    <span class="mi">Aquí se come rico</span><span class="ms">·</span>
     <span class="mi">Enchiladas</span><span class="ms">·</span>
     <span class="mi">Flautas</span><span class="ms">·</span>
-    <span class="mi">Aguas Frescas</span><span class="ms">·</span>
+    <span class="mi">Aquí se come rico</span><span class="ms">·</span>
+    <span class="mi">Sopes</span><span class="ms">·</span>
+    <span class="mi">Tacos</span><span class="ms">·</span>
+    <span class="mi">Tostadas</span><span class="ms">·</span>
     <span class="mi">Antojitos hechos con el corazón</span><span class="ms">·</span>
   </div>
 </div>
@@ -726,7 +713,7 @@ footer {
   <div class="nos-visual rev">
     <div class="nos-ybg">1959</div>
     <div class="nos-centro">
-      <div class="nos-eyebrow">✦ Taquería María ✦</div>
+      <div class="nos-eyebrow">✦ Taqueria ✦</div>
       <div class="nos-name">MA<br><em>RÍA</em></div>
       <div class="nos-sep"></div>
       <div class="nos-sub">Monterrey, N.L. · 1959</div>
@@ -737,31 +724,10 @@ footer {
     <span class="s-label">Nuestra Historia</span>
     <h2 class="s-h2">Aquí se cocina<br>con el <em>corazón.</em></h2>
     <div class="s-hr"></div>
-    <p class="s-body">
-      TAQUERÍA MARÍA — TRADICIÓN DEL BARRIO
-
-      </p>
-    <p class="s-body" style="margin-top:1.2rem;">
-      A su servicio desde 1959.
-    </p>
-
-    </p>
-    <p class="s-body" style="margin-top:1.2rem;">
-      Todo comenzó con un comal. 
-    </p>
-                                         
-En 1959, Doña María de la Cruz Hurtado emprendió su negocio de antojitos en la Colonia Nuevo Repueblo, al centro de Monterrey — empezando con tan solo un comal.
-Con los años, sus antojitos se ganaron el cariño del barrio. Y cuando el pozole llegó al menú, también se volvió consentido. Doña María cocinaba con una sazón que no se aprende: se hereda.
-Aunque ella ya no está entre nosotros, su descendencia se ha encargado de mantener vivas sus recetas, su sazón y todo lo que ella representó.
-Esto es esfuerzo y amor heredado por generaciones. Anhelando que el trabajo de nuestras manos — y de quienes estuvieron antes que nosotros — llegue cada vez más lejos. Que se conozca, que se valore y que se honre.
-Queremos que quien llegue a nuestra mesa se sienta como en casa. Que se vaya con el alma y el estómago llenitos.
-
-Aquí seguimos cocinando con el corazón — desde 1959.
-    </p>
-    <p class="s-body" style="margin-top:1.2rem;">
-      Hoy, 68 años después, seguimos cocinando las mismas recetas, con el mismo amor y sabor de siempre. 
-      Dos sucursales en Monterrey, un solo sabor.
-    </p>
+    <p class="s-body">TAQUERÍA MARÍA — TRADICIÓN DEL BARRIO</p>
+    <p class="s-body" style="margin-top:1.2rem;">A su servicio desde 1959.</p>
+    <p class="s-body" style="margin-top:1.2rem;">Todo comenzó con un comal. En 1959, Doña María de la Cruz Hurtado emprendió su negocio de antojitos en la Colonia Nuevo Repueblo, al centro de Monterrey — empezando con tan solo un comal. Con los años, sus antojitos se ganaron el cariño del barrio. Y cuando el pozole llegó al menú, también se volvió consentido. Doña María cocinaba con una sazón que no se aprende: se hereda. Aunque ella ya no está entre nosotros, su descendencia se ha encargado de mantener vivas sus recetas, su sazón y todo lo que ella representó. Esto es esfuerzo y amor heredado por generaciones. Anhelando que el trabajo de nuestras manos — y de quienes estuvieron antes que nosotros — llegue cada vez más lejos. Que se conozca, que se valore y que se honre. Queremos que quien llegue a nuestra mesa se sienta como en casa. Que se vaya con el alma y el estómago llenitos. Aquí seguimos cocinando con el corazón — desde 1959.</p>
+    <p class="s-body" style="margin-top:1.2rem;">Hoy, 68 años después, seguimos cocinando las mismas recetas, con el mismo amor y sabor de siempre. Dos sucursales en Monterrey, un solo sabor.</p>
     <a href="#menu" class="btn-b" style="margin-top:2.5rem;display:inline-block;">Ver el Menú</a>
   </div>
 </section>
@@ -773,7 +739,6 @@ Aquí seguimos cocinando con el corazón — desde 1959.
       <span class="s-label">Pozole y Antojitos Mexicanos</span>
       <h2 class="s-h2">Nuestro <em>Menú</em></h2>
     </div>
-    <a href="https://bit.ly/3AG2qic" target="_blank" class="btn-g">A Domicilio</a>
   </div>
   <div class="menu-lista">
     <div class="mrow rev">
@@ -787,21 +752,21 @@ Aquí seguimos cocinando con el corazón — desde 1959.
     <div class="mrow rev">
       <div class="mrow-n">02</div>
       <div class="mrow-info">
-        <div class="mrow-nombre">Tacos Dorados</div>
-        <div class="mrow-desc">Deshebrada, picadillo, papa con queso y pollo.</div>
-        <div class="mrow-precio">$30 c/u</div>
-      </div>
-    </div>
-      <div class="mrow rev">
-      <div class="mrow-n">06</div>
-      <div class="mrow-info">
         <div class="mrow-nombre">Enchiladas rojas</div>
         <div class="mrow-desc">De queso fresco</div>
         <div class="mrow-precio">$130</div>
       </div>
-    </div>  
+    </div>
     <div class="mrow rev">
-      <div class="mrow-n">07</div>
+      <div class="mrow-n">03</div>
+      <div class="mrow-info">
+        <div class="mrow-nombre">Enchiladas Suizas</div>
+        <div class="mrow-desc">Solo sucursal Tec</div>
+        <div class="mrow-precio">$120</div>
+      </div>
+    </div>
+    <div class="mrow rev">
+      <div class="mrow-n">04</div>
       <div class="mrow-info">
         <div class="mrow-nombre">Flautas</div>
         <div class="mrow-desc">De carne deshebrada de res.</div>
@@ -809,7 +774,7 @@ Aquí seguimos cocinando con el corazón — desde 1959.
       </div>
     </div>
     <div class="mrow rev">
-      <div class="mrow-n">03</div>
+      <div class="mrow-n">05</div>
       <div class="mrow-info">
         <div class="mrow-nombre">Sopes</div>
         <div class="mrow-desc">Hechas a mano con masa de maíz. Deshebrada, chicharrón, picadillo ó pollo.</div>
@@ -817,20 +782,45 @@ Aquí seguimos cocinando con el corazón — desde 1959.
       </div>
     </div>
     <div class="mrow rev">
-      <div class="mrow-n">04</div>
+      <div class="mrow-n">06</div>
       <div class="mrow-info">
-        <div class="mrow-nombre">Tostadas</div>
+        <div class="mrow-nombre">Tostadas chicas</div>
         <div class="mrow-desc">Deshebrada ó pollo.</div>
         <div class="mrow-precio">$45 c/u</div>
       </div>
     </div>
     <div class="mrow rev">
-      <div class="mrow-n">05</div>
+      <div class="mrow-n">07</div>
+      <div class="mrow-info">
+        <div class="mrow-nombre">Tostadas grandes</div>
+        <div class="mrow-desc">Deshebrada ó pollo.</div>
+        <div class="mrow-precio">$140 c/u</div>
+      </div>
+    </div>
+    <div class="mrow rev">
+      <div class="mrow-n">08</div>
+      <div class="mrow-info">
+        <div class="mrow-nombre">Tacos Dorados</div>
+        <div class="mrow-desc">Deshebrada, picadillo, papa con queso ó pollo.</div>
+        <div class="mrow-precio">$130</div>
+      </div>
+    </div>
+    <div class="mrow rev">
+      <div class="mrow-n">09</div>
+      <div class="mrow-info">
+        <div class="mrow-nombre">Papas</div>
+        <div class="mrow-desc">Orden extra.</div>
+        <div class="mrow-precio">Chicas $55 / Grandes $75</div>
+      </div>
+    </div>
+    <div class="mrow rev">
+      <div class="mrow-n">10</div>
       <div class="mrow-info">
         <div class="mrow-nombre">Aguas Frescas</div>
         <div class="mrow-desc">Jamaica, horchata y tamarindo. Preparadas fresquitas cada mañana.</div>
         <div class="mrow-precio">$30</div>
-       </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -863,12 +853,12 @@ Aquí seguimos cocinando con el corazón — desde 1959.
     <div class="gcol-nbg">4</div>
     <span class="gcol-label">Deshebrada / pollo</span>
     <div class="gcol-titulo">Tostadas</div>
-     </div>
+  </div>
   <div class="gcol rev">
     <div class="gcol-nbg">5</div>
     <span class="gcol-label">De queso fresco</span>
     <div class="gcol-titulo">Enchiladas</div>
-     </div>
+  </div>
   <div class="gcol rev">
     <div class="gcol-nbg">6</div>
     <span class="gcol-label">De carne deshebrada</span>
@@ -883,19 +873,19 @@ Aquí seguimos cocinando con el corazón — desde 1959.
     <h2 class="s-h2">Dos lugares,<br><em>un sabor.</em></h2>
     <div class="s-hr"></div>
     <div class="suc">
-  <span class="suc-etq">Sucursal Matriz</span>
-  <div class="suc-nom">Nuevo Repueblo</div>
-  <div class="suc-dir">Iguala 1208, Nuevo Repueblo <br>Monterrey, Nuevo León. <br>Telefono: 81 8190 3385</div>
-  <a href="https://maps.app.goo.gl/z1nZrH8ooGcQupbB9" target="_blank" class="btn-b" style="margin-top:2.5rem;display:inline-block;">Abrir Mapa</a>
-</div>
+      <span class="suc-etq">Sucursal Matriz</span>
+      <div class="suc-nom">Nuevo Repueblo</div>
+      <div class="suc-dir">Iguala 1208, Nuevo Repueblo <br>Monterrey, Nuevo León. <br>Telefono: 81 8190 3385</div>
+      <a href="https://maps.app.goo.gl/z1nZrH8ooGcQupbB9" target="_blank" class="btn-b" style="margin-top:.9rem;display:inline-block;">Abrir Mapa</a>
+    </div>
     <div class="suc">
-  <span class="suc-etq">Sucursal</span>
-  <div class="suc-nom">Tec</div>
-  <div class="suc-dir">Av. Junco de la Vega, Altavista, Distrito Tec <br>Monterrey, Nuevo León.<br>Telefono: 81 2349 6657</div>
-  <a href="https://maps.app.goo.gl/K72F69oKvRv5z3v17" target="_blank" class="btn-b" style="margin-top:2.5rem;display:inline-block;">Abrir Mapa</a>
-</div>
+      <span class="suc-etq">Sucursal</span>
+      <div class="suc-nom">Tec</div>
+      <div class="suc-dir">Av. Junco de la Vega, Altavista, Distrito Tec <br>Monterrey, Nuevo León.<br>Telefono: 81 2349 6657</div>
+      <a href="https://maps.app.goo.gl/K72F69oKvRv5z3v17" target="_blank" class="btn-b" style="margin-top:.9rem;display:inline-block;">Abrir Mapa</a>
+    </div>
     <div class="hor">
-      <span class="hor-etq">Le antendemos de</span>
+      <span class="hor-etq">Le atendemos de</span>
       <div class="hor-val">Martes a Domingo<br>de 12 pm a 10 pm.</div>
     </div>
   </div>
@@ -920,7 +910,7 @@ Aquí seguimos cocinando con el corazón — desde 1959.
   </div>
   <div class="ig-grid">
     <div class="igc"><span>Pozole</span></div>
-        <div class="igc"><span>Enchiladas</span></div>
+    <div class="igc"><span>Enchiladas</span></div>
     <div class="igc"><span>Flautas</span></div>
     <div class="igc"><span>Tacos Dorados</span></div>
     <div class="igc"><span>Sopes</span></div>

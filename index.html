@@ -239,12 +239,20 @@ nav ul a:hover { color: var(--blanco); }
 }
 
 .nos-visual {
-  background: var(--gris);
+  background: url('cuchara.png') center center / cover no-repeat;
   border-right: 1px solid var(--linea);
   display:flex; align-items:center; justify-content:center;
   min-height:600px; padding:5rem 4rem;
   position:relative; overflow:hidden;
 }
+/* overlay oscuro encima de la foto */
+.nos-visual::after {
+  content:'';
+  position:absolute; inset:0;
+  background: rgba(30, 0, 20, .60);
+  z-index:0;
+}
+
 .nos-centro {
   position:relative; z-index:1;
   text-align:center;
@@ -377,14 +385,47 @@ nav ul a:hover { color: var(--blanco); }
 .gcol {
   aspect-ratio:1;
   border-right:1px solid var(--linea);
-  background:var(--gris);
+  background:var(--gris) center center / cover no-repeat;
   display:flex; flex-direction:column;
   justify-content:flex-end; padding:1.8rem;
   position:relative; overflow:hidden;
-  cursor:default; transition:background .3s;
+  cursor:default; transition:transform .4s;
 }
 .gcol:last-child { border-right:none; }
-.gcol:hover { background:var(--gris2); }
+
+/* overlay oscuro base */
+.gcol::before {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,.75) 0%,
+    rgba(0,0,0,.3)  50%,
+    rgba(0,0,0,.1)  100%
+  );
+  transition: background .35s;
+  z-index:0;
+}
+/* al hover: overlay más transparente para ver mejor la imagen */
+.gcol:hover::before {
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,.55) 0%,
+    rgba(0,0,0,.15) 50%,
+    rgba(0,0,0,.05) 100%
+  );
+}
+/* zoom suave en hover */
+.gcol:hover { transform: scale(1.01); }
+
+/* imágenes individuales — pon tus archivos en la misma carpeta que el HTML */
+.gcol[data-img="pozole"]      { background-image: url('pozole.jpg'); }
+.gcol[data-img="enchiladas"]  { background-image: url('enchiladas.jpg'); }
+.gcol[data-img="suizas"]      { background-image: url('suizas.jpg'); }
+.gcol[data-img="flautas"]     { background-image: url('flautas.jpg'); }
+.gcol[data-img="tacos"]       { background-image: url('tacos.jpg'); }
+.gcol[data-img="tostadas-ch"] { background-image: url('tostadas chicas.jpg'); }
+.gcol[data-img="tostadas-gr"] { background-image: url('tostadas grandes.jpg'); }
+.gcol[data-img="sopes"]       { background-image: url('sopes.jpg'); }
 
 .gcol-nbg {
   position:absolute; top:-.8rem; left:.5rem;
@@ -393,12 +434,13 @@ nav ul a:hover { color: var(--blanco); }
   font-size:9rem; line-height:1;
   color:rgba(245,240,232,.08);
   user-select:none; pointer-events:none;
+  z-index:1;
 }
 .gcol-label {
   font-family:'Barlow Condensed',sans-serif;
   font-size:.7rem; font-weight:700;
   letter-spacing:.4em; text-transform:uppercase;
-  color:rgba(245,240,232,1);
+  color:rgba(245,240,232,.8);
   margin-bottom:.3rem;
   position:relative; z-index:1;
   transition:color .25s;
@@ -408,17 +450,19 @@ nav ul a:hover { color: var(--blanco); }
   font-family:'Libre Baskerville',serif;
   font-weight:700; font-style:italic;
   font-size:1.7rem;
-  color:rgba(245,240,232,1);
+  color:var(--blanco);
   position:relative; z-index:1;
   transition:color .25s;
+  text-shadow: 0 2px 8px rgba(0,0,0,.5);
 }
 .gcol:hover .gcol-titulo { color:var(--blanco); }
 .gcol::after {
   content:''; position:absolute;
-  bottom:0; left:0; right:0; height:2px;
+  bottom:0; left:0; right:0; height:3px;
   background:var(--rosa);
   transform:scaleX(0); transform-origin:left;
-  transition:transform .3s;
+  transition:transform .35s;
+  z-index:2;
 }
 .gcol:hover::after { transform:scaleX(1); }
 
@@ -474,20 +518,25 @@ nav ul a:hover { color: var(--blanco); }
 }
 
 .ubi-der {
-  background:var(--gris);
+  background: url('lucha.jpeg') center center / cover no-repeat;
   display:flex; align-items:center; justify-content:center;
   min-height:480px; position:relative; overflow:hidden;
 }
+/* capa oscura semitransparente encima de la foto */
 .ubi-der::before {
   content:'';
   position:absolute; inset:0;
-  background:
+  background: rgba(30, 0, 20, .68);
+  /* grid sutil encima del oscuro */
+  background-image:
+    rgba(30,0,20,.68),
     repeating-linear-gradient(0deg,
       transparent 0,transparent 49px,
-      rgba(245,240,232,.03) 49px,rgba(245,240,232,.03) 50px),
+      rgba(245,240,232,.04) 49px,rgba(245,240,232,.04) 50px),
     repeating-linear-gradient(90deg,
       transparent 0,transparent 49px,
-      rgba(245,240,232,.03) 49px,rgba(245,240,232,.03) 50px);
+      rgba(245,240,232,.04) 49px,rgba(245,240,232,.04) 50px);
+  background: rgba(30, 0, 20, .62);
 }
 .mapa-inner {
   position:relative; z-index:1;
@@ -652,7 +701,7 @@ footer {
 <section id="hero">
   <div class="hero-top">
     <span class="hero-top-desde"></span>
-    <span class="hero-top-ciudad">Monterrey, Nuevo León</span>
+    <span class="hero-top-ciudad"></span>
   </div>
 
   <div class="hero-h">
@@ -710,8 +759,15 @@ footer {
     <div class="s-hr"></div>
     <p class="s-body">TAQUERÍA MARÍA — TRADICIÓN DEL BARRIO</p>
     <p class="s-body" style="margin-top:1.2rem;">A su servicio desde 1959.</p>
-    <p class="s-body" style="margin-top:1.2rem;">Todo comenzó con un comal. En 1959, Doña María de la Cruz Hurtado emprendió su negocio de antojitos en la Colonia Nuevo Repueblo, al centro de Monterrey — empezando con tan solo un comal. Con los años, sus antojitos se ganaron el cariño del barrio. Y cuando el pozole llegó al menú, también se volvió consentido. Doña María cocinaba con una sazón que no se aprende: se hereda. Aunque ella ya no está entre nosotros, su descendencia se ha encargado de mantener vivas sus recetas, su sazón y todo lo que ella representó. Esto es esfuerzo y amor heredado por generaciones. Anhelando que el trabajo de nuestras manos — y de quienes estuvieron antes que nosotros — llegue cada vez más lejos. Que se conozca, que se valore y que se honre. Queremos que quien llegue a nuestra mesa se sienta como en casa. Que se vaya con el alma y el estómago llenitos. Aquí seguimos cocinando con el corazón — desde 1959.</p>
-    <p class="s-body" style="margin-top:1.2rem;">Hoy, 68 años después, seguimos cocinando las mismas recetas, con el mismo amor y sabor de siempre. Dos sucursales en Monterrey, un solo sabor.</p>
+    <p class="s-body" style="margin-top:1.2rem;">Todo empezó con un comal. En 1959, Doña María de la Cruz Hurtado emprendió su negocio en la Colonia Nuevo Repueblo, en el centro de Monterrey, empezando con tan solo un comal, ganas de salir adelante y mucho amor por la cocina.</p>
+    <p class="s-body" style="margin-top:1.2rem;">Con el tiempo, sus antojitos se fueron ganando el cariño de la gente, y cuando el pozole llegó al menú, se volvió uno de los favoritos.</p>
+    <p class="s-body" style="margin-top:1.2rem;">Su sazón y su calidez dejaron huella.</p>
+    <p class="s-body" style="margin-top:1.2rem;">Hoy ella ya no está, pero lo que nos dejó sigue aquí. Sus recetas y su forma de cocinar viven en lo que hacemos todos los días.</p>
+    <p class="s-body" style="margin-top:1.2rem;">Somos un lugar sencillo, donde buscamos que la gente se sienta en confianza, coma rico, esté a gusto y se vaya contenta… con ganas de volver.</p>
+    <p class="s-body" style="margin-top:1.2rem;">Porque más que vender comida, compartimos lo que somos.</p>
+    <p class="s-body" style="margin-top:1.2rem;">Y aquí seguimos, 68 años después, cocinando con el corazón.</p>
+    <span class="s-label" style="margin-top:3rem; display:block;">Dos sucursales en Monterrey. Un solo sabor.</span>
+    
     <a href="#menu" class="btn-b" style="margin-top:2.5rem;display:inline-block;">Ver el Menú</a>
   </div>
 </section>
@@ -726,7 +782,7 @@ footer {
   </div>
   <div class="menu-lista">
     <div class="mrow rev">
-      <div class="mrow-n">01</div>
+      <div class="mrow-n">✦</div>
       <div class="mrow-info">
         <div class="mrow-nombre">Pozole</div>
         <div class="mrow-desc">Rojo de puerco. La especialidad de la casa.</div>
@@ -734,23 +790,23 @@ footer {
       </div>
     </div>
     <div class="mrow rev">
-      <div class="mrow-n">02</div>
+      <div class="mrow-n">✦</div>
       <div class="mrow-info">
         <div class="mrow-nombre">Enchiladas rojas</div>
-        <div class="mrow-desc">De queso fresco</div>
+        <div class="mrow-desc">De queso fresco.</div>
         <div class="mrow-precio">$130</div>
       </div>
     </div>
     <div class="mrow rev">
-      <div class="mrow-n">03</div>
+      <div class="mrow-n">✦</div>
       <div class="mrow-info">
         <div class="mrow-nombre">Enchiladas Suizas</div>
-        <div class="mrow-desc">Solo sucursal Tec</div>
+        <div class="mrow-desc">Solo sucursal Tec.</div>
         <div class="mrow-precio">$120</div>
       </div>
     </div>
     <div class="mrow rev">
-      <div class="mrow-n">04</div>
+      <div class="mrow-n">✦</div>
       <div class="mrow-info">
         <div class="mrow-nombre">Flautas</div>
         <div class="mrow-desc">De carne deshebrada de res.</div>
@@ -758,7 +814,8 @@ footer {
       </div>
     </div>
     <div class="mrow rev">
-      <div class="mrow-n">05</div>
+      <div class="mrow-n">✦
+      </div>
       <div class="mrow-info">
         <div class="mrow-nombre">Sopes</div>
         <div class="mrow-desc">Hechas a mano con masa de maíz. Deshebrada, chicharrón, picadillo ó pollo.</div>
@@ -766,7 +823,7 @@ footer {
       </div>
     </div>
     <div class="mrow rev">
-      <div class="mrow-n">06</div>
+      <div class="mrow-n">✦</div>
       <div class="mrow-info">
         <div class="mrow-nombre">Tostadas chicas</div>
         <div class="mrow-desc">Deshebrada ó pollo.</div>
@@ -774,7 +831,7 @@ footer {
       </div>
     </div>
     <div class="mrow rev">
-      <div class="mrow-n">07</div>
+      <div class="mrow-n">✦</div>
       <div class="mrow-info">
         <div class="mrow-nombre">Tostadas grandes</div>
         <div class="mrow-desc">Deshebrada ó pollo.</div>
@@ -782,7 +839,7 @@ footer {
       </div>
     </div>
     <div class="mrow rev">
-      <div class="mrow-n">08</div>
+      <div class="mrow-n">✦</div>
       <div class="mrow-info">
         <div class="mrow-nombre">Tacos Dorados</div>
         <div class="mrow-desc">Deshebrada, picadillo, papa con queso ó pollo.</div>
@@ -790,7 +847,7 @@ footer {
       </div>
     </div>
     <div class="mrow rev">
-      <div class="mrow-n">09</div>
+      <div class="mrow-n">✦</div>
       <div class="mrow-info">
         <div class="mrow-nombre">Papas</div>
         <div class="mrow-desc">Orden extra.</div>
@@ -798,7 +855,7 @@ footer {
       </div>
     </div>
     <div class="mrow rev">
-      <div class="mrow-n">10</div>
+      <div class="mrow-n">✦</div>
       <div class="mrow-info">
         <div class="mrow-nombre">Aguas Frescas</div>
         <div class="mrow-desc">Jamaica, horchata y tamarindo. Preparadas fresquitas cada mañana.</div>
@@ -818,35 +875,37 @@ footer {
 
 <!-- GALERÍA -->
 <section id="galeria">
-  <div class="gcol rev">
-    <div class="gcol-nbg">1</div>
-    <span class="gcol-label">Especialidad</span>
-    <div class="gcol-titulo">Pozole rojo de puerco</div>
+  <div class="gcol rev" data-img="pozole">
+    <span class="gcol-label">Especialidad de la casa</span>
+    <div class="gcol-titulo">Pozole</div>
   </div>
-  <div class="gcol rev">
-    <div class="gcol-nbg">2</div>
-    <span class="gcol-label">Dorados</span>
-    <div class="gcol-titulo">Tacos</div>
-  </div>
-  <div class="gcol rev">
-    <div class="gcol-nbg">3</div>
-    <span class="gcol-label">Hechos a mano</span>
-    <div class="gcol-titulo">Sopes</div>
-  </div>
-  <div class="gcol rev">
-    <div class="gcol-nbg">4</div>
-    <span class="gcol-label">Deshebrada / pollo</span>
-    <div class="gcol-titulo">Tostadas</div>
-  </div>
-  <div class="gcol rev">
-    <div class="gcol-nbg">5</div>
+  <div class="gcol rev" data-img="enchiladas">
     <span class="gcol-label">De queso fresco</span>
     <div class="gcol-titulo">Enchiladas</div>
   </div>
-  <div class="gcol rev">
-    <div class="gcol-nbg">6</div>
-    <span class="gcol-label">De carne deshebrada</span>
+  <div class="gcol rev" data-img="suizas">
+    <span class="gcol-label">Solo sucursal Tec</span>
+    <div class="gcol-titulo">Suizas</div>
+  </div>
+  <div class="gcol rev" data-img="flautas">
+    <span class="gcol-label">De res</span>
     <div class="gcol-titulo">Flautas</div>
+  </div>
+  <div class="gcol rev" data-img="tacos">
+    <span class="gcol-label">Dorados</span>
+    <div class="gcol-titulo">Tacos</div>
+  </div>
+  <div class="gcol rev" data-img="tostadas-ch">
+    <span class="gcol-label">Chicas</span>
+    <div class="gcol-titulo">Tostadas</div>
+  </div>
+  <div class="gcol rev" data-img="tostadas-gr">
+    <span class="gcol-label">Grandes</span>
+    <div class="gcol-titulo">Tostadas</div>
+  </div>
+  <div class="gcol rev" data-img="sopes">
+    <span class="gcol-label">Hechos a mano</span>
+    <div class="gcol-titulo">Sopes</div>
   </div>
 </section>
 
@@ -877,8 +936,8 @@ footer {
   <div class="ubi-der rev">
     <div class="mapa-inner">
       <div class="mapa-cruz"><div class="mapa-dot"></div></div>
-      <div class="mapa-ciudad">Monterrey</div>
-      <div class="mapa-estado">Nuevo León · México</div>
+      <div class="mapa-ciudad">Tradición del barrio</div>
+      <div class="mapa-estado">Monterrey · Nuevo León · México</div>
     </div>
   </div>
 </section>
@@ -896,7 +955,7 @@ footer {
     <div class="igc"><span>Pozole</span></div>
     <div class="igc"><span>Enchiladas</span></div>
     <div class="igc"><span>Flautas</span></div>
-    <div class="igc"><span>Tacos Dorados</span></div>
+    <div class="igc"><span>Tacos</span></div>
     <div class="igc"><span>Sopes</span></div>
     <div class="igc"><span>Tostadas</span></div>
     <div class="igc"><span>Tradición</span></div>
@@ -905,6 +964,9 @@ footer {
     <div class="igc"><span>Sabor</span></div>
     <div class="igc"><span>Monterrey</span></div>
     <div class="igc"><span>Amor</span></div>
+    <div class="igc"><span>México</span></div>
+    <div class="igc"><span>Antojitos</span></div>
+    <div class="igc"><span>Servicio</span></div>
   </div>
 </section>
 
@@ -919,7 +981,7 @@ footer {
     <a href="#menu">Menú</a>
     <a href="#ubicacion">Sucursales</a>
     <a href="https://instagram.com/taqueriamaria1959" target="_blank">Instagram</a>
-    <a href="https://bit.ly/3AG2qic" target="_blank">A Domicilio</a>
+    <a href="tel:+528123496657" target="_blank">Pide a Domicilio</a>
   </div>
   <div class="ft-copy">
     © Taqueria María 2026<br>

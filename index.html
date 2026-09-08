@@ -862,7 +862,22 @@ h1,h2,h3,p,span,div,a { overflow-wrap:break-word; word-break:break-word; }
   .mrow { border-right:none; padding:2.2rem 6vw; gap:1.5rem; }
   .menu-top { padding:4.5rem 6vw 2.5rem; }
   .ig-grid { grid-template-columns:repeat(3,1fr); }
-  nav ul { display:none; }
+  nav { flex-wrap:wrap; row-gap:.7rem; }
+  .nav-eyebrow { order:1; }
+  .nav-derecha { order:2; }
+  nav ul {
+    order:3; flex-basis:100%; width:100%;
+    display:flex; flex-wrap:wrap; justify-content:center;
+    background:transparent; box-shadow:none; padding:0; gap:.5rem;
+  }
+  nav ul li { display:flex; flex:0 0 auto; }
+  nav ul a {
+    background: rgba(255,255,255,.16);
+    border:1px solid rgba(245,240,232,.5);
+    padding:.5rem 1.1rem; font-size:.68rem; letter-spacing:.18em;
+    white-space:nowrap; flex-shrink:0;
+  }
+  nav ul a.activo { background:var(--blanco); color:var(--negro); border-color:var(--blanco); }
   footer { grid-template-columns:1fr; gap:2rem; padding:3rem 6vw 3rem; }
   .ft-copy { text-align:left; align-self:auto; }
   .frase { padding:5rem 6vw; }
@@ -893,6 +908,8 @@ h1,h2,h3,p,span,div,a { overflow-wrap:break-word; word-break:break-word; }
 @media(max-width:400px){
   nav { padding:.9rem 4vw; }
   .nav-cta { font-size:.65rem; letter-spacing:.08em; padding:.6rem 1rem; }
+  nav ul { gap:.4rem; }
+  nav ul a { font-size:.6rem; letter-spacing:.1em; padding:.42rem .9rem; }
   #hero { padding:0 5vw 8rem; }
   .hero-top { padding:5.5rem 5vw 0; }
   .hero-linea3 { font-size:.85rem; }
@@ -928,10 +945,10 @@ h1,h2,h3,p,span,div,a { overflow-wrap:break-word; word-break:break-word; }
 <nav id="nav">
   <span class="nav-eyebrow">Pozole y Antojitos Mexicanos</span>
   <ul>
-    <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#menu">Menú</a></li>
-    <li><a href="#ubicacion">Sucursales</a></li>
     <li><a href="#eventos">Eventos</a></li>
+    <li><a href="#menu">Menú</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#ubicacion">Sucursales</a></li>
   </ul>
   <div class="nav-derecha">
     <a href="tel:+528123496657" class="nav-cta">Pide a domicilio</a>
@@ -988,36 +1005,73 @@ h1,h2,h3,p,span,div,a { overflow-wrap:break-word; word-break:break-word; }
   </div>
 </div>
 
-<!-- NOSOTROS -->
-<section id="nosotros">
-  <div class="nos-visual rev">
-    <div class="nos-ybg"></div>
-    <div class="nos-centro">
-      <div class="nos-eyebrow">✦ Taqueria ✦</div>
-      <div class="nos-name">MA<br><em>RÍA</em></div>
-      <div class="nos-sep"></div>
-      <div class="nos-sub">Monterrey, N.L. · 1959</div>
-    </div>
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="gcol rev" data-img="pozole">
+    <span class="gcol-label">Especialidad de la casa</span>
+    <div class="gcol-titulo">Pozole</div>
   </div>
-
-  <div class="nos-texto rev">
-    <span class="s-label">Nuestra Historia</span>
-    <h2 class="s-h2">Aquí se cocina<br>con el <em>corazón.</em></h2>
-    <div class="s-hr"></div>
-    <p class="s-body">TAQUERÍA MARÍA — TRADICIÓN DEL BARRIO</p>
-    <p class="s-body" style="margin-top:1.2rem;">A su servicio desde 1959.</p>
-    <p class="s-body" style="margin-top:1.2rem;">Todo empezó con un comal. En 1959, Doña María de la Cruz Hurtado emprendió su negocio en la Colonia Nuevo Repueblo, en el centro de Monterrey, empezando con tan solo un comal, ganas de salir adelante y mucho amor por la cocina.</p>
-    <p class="s-body" style="margin-top:1.2rem;">Con el tiempo, sus antojitos se fueron ganando el cariño de la gente, y cuando el pozole llegó al menú, se volvió uno de los favoritos.</p>
-    <p class="s-body" style="margin-top:1.2rem;">Su sazón y su calidez dejaron huella.</p>
-    <p class="s-body" style="margin-top:1.2rem;">Hoy ella ya no está, pero lo que nos dejó sigue aquí. Sus recetas y su forma de cocinar viven en lo que hacemos todos los días.</p>
-    <p class="s-body" style="margin-top:1.2rem;">Somos un lugar sencillo, donde buscamos que la gente se sienta en confianza, coma rico, esté a gusto y se vaya contenta… con ganas de volver.</p>
-    <p class="s-body" style="margin-top:1.2rem;">Porque más que vender comida, compartimos lo que somos.</p>
-    <p class="s-body" style="margin-top:1.2rem;">Y aquí seguimos, 68 años después, cocinando con el corazón.</p>
-    <span class="s-label" style="margin-top:3rem; display:block;">Dos sucursales en Monterrey. Un solo sabor.</span>
-    
-    <a href="#menu" class="btn-b" style="margin-top:2.5rem;display:inline-block;">Ver el Menú</a>
+  <div class="gcol rev" data-img="enchiladas">
+    <span class="gcol-label">De queso fresco</span>
+    <div class="gcol-titulo">Enchiladas</div>
+  </div>
+  <div class="gcol rev" data-img="suizas">
+    <span class="gcol-label">Solo sucursal Tec</span>
+    <div class="gcol-titulo">Suizas</div>
+  </div>
+  <div class="gcol rev" data-img="flautas">
+    <span class="gcol-label">De res</span>
+    <div class="gcol-titulo">Flautas</div>
+  </div>
+  <div class="gcol rev" data-img="tacos">
+    <span class="gcol-label">Dorados</span>
+    <div class="gcol-titulo">Tacos</div>
+  </div>
+  <div class="gcol rev" data-img="tostadas-ch">
+    <span class="gcol-label">Chicas</span>
+    <div class="gcol-titulo">Tostadas</div>
+  </div>
+  <div class="gcol rev" data-img="tostadas-gr">
+    <span class="gcol-label">Grandes</span>
+    <div class="gcol-titulo">Tostadas</div>
+  </div>
+  <div class="gcol rev" data-img="sopes">
+    <span class="gcol-label">Hechos a mano</span>
+    <div class="gcol-titulo">Sopes</div>
   </div>
 </section>
+
+<!-- EVENTOS -->
+<section id="eventos">
+  <div class="ev-texto rev">
+    <span class="s-label">Eventos</span>
+    <h2 class="s-h2">Tú pones el motivo.<br>Nosotros ponemos <span class="pink">la comida.</span></h2>
+    <div class="s-hr"></div>
+    <p class="s-body">¿Tienes una fiesta, reunión, cumpleaños, posada o evento? Lleva pozole y antojitos a tu mesa.</p>
+    <p class="s-body" style="margin-top:1.2rem;">Cuéntanos qué evento tienes, para cuántas personas y qué te gustaría llevar, y te ayudamos a encontrar la opción que mejor se adapte a tu reunión.</p>
+    <p class="s-body" style="margin-top:1.2rem;font-style:italic;">Haz de tus eventos una ocasión para compartir el sabor de nuestra historia.</p>
+    <a href="https://wa.me/528183963102" target="_blank" class="btn-wa" style="margin-top:2.5rem;">
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="#fff">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/>
+      </svg>
+      Cotiza tu Evento
+    </a>
+  </div>
+
+  <div class="ev-lista rev">
+    <span class="ev-lista-titulo">Ideal para</span>
+    <ul class="ev-items">
+      <li><span class="ev-n">✦</span>Cumpleaños</li>
+      <li><span class="ev-n">✦</span>Reuniones familiares</li>
+      <li><span class="ev-n">✦</span>Fiestas</li>
+      <li><span class="ev-n">✦</span>Posadas</li>
+      <li><span class="ev-n">✦</span>Eventos empresariales</li>
+      <li><span class="ev-n">✦</span>Reuniones con amigos</li>
+      <li><span class="ev-n">✦</span>Cualquier ocasión que merezca buena comida</li>
+    </ul>
+  </div>
+</section>
+
 
 <!-- MENÚ -->
 <section id="menu">
@@ -1137,39 +1191,34 @@ h1,h2,h3,p,span,div,a { overflow-wrap:break-word; word-break:break-word; }
   <div class="frase-sub rev">@taqueriamaria1959 — Monterrey, N.L.</div>
 </div>
 
-<!-- GALERÍA -->
-<section id="galeria">
-  <div class="gcol rev" data-img="pozole">
-    <span class="gcol-label">Especialidad de la casa</span>
-    <div class="gcol-titulo">Pozole</div>
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="nos-visual rev">
+    <div class="nos-ybg"></div>
+    <div class="nos-centro">
+      <div class="nos-eyebrow">✦ Taqueria ✦</div>
+      <div class="nos-name">MA<br><em>RÍA</em></div>
+      <div class="nos-sep"></div>
+      <div class="nos-sub">Monterrey, N.L. · 1959</div>
+    </div>
   </div>
-  <div class="gcol rev" data-img="enchiladas">
-    <span class="gcol-label">De queso fresco</span>
-    <div class="gcol-titulo">Enchiladas</div>
-  </div>
-  <div class="gcol rev" data-img="suizas">
-    <span class="gcol-label">Solo sucursal Tec</span>
-    <div class="gcol-titulo">Suizas</div>
-  </div>
-  <div class="gcol rev" data-img="flautas">
-    <span class="gcol-label">De res</span>
-    <div class="gcol-titulo">Flautas</div>
-  </div>
-  <div class="gcol rev" data-img="tacos">
-    <span class="gcol-label">Dorados</span>
-    <div class="gcol-titulo">Tacos</div>
-  </div>
-  <div class="gcol rev" data-img="tostadas-ch">
-    <span class="gcol-label">Chicas</span>
-    <div class="gcol-titulo">Tostadas</div>
-  </div>
-  <div class="gcol rev" data-img="tostadas-gr">
-    <span class="gcol-label">Grandes</span>
-    <div class="gcol-titulo">Tostadas</div>
-  </div>
-  <div class="gcol rev" data-img="sopes">
-    <span class="gcol-label">Hechos a mano</span>
-    <div class="gcol-titulo">Sopes</div>
+
+  <div class="nos-texto rev">
+    <span class="s-label">Nuestra Historia</span>
+    <h2 class="s-h2">Aquí se cocina<br>con el <em>corazón.</em></h2>
+    <div class="s-hr"></div>
+    <p class="s-body">TAQUERÍA MARÍA — TRADICIÓN DEL BARRIO</p>
+    <p class="s-body" style="margin-top:1.2rem;">A su servicio desde 1959.</p>
+    <p class="s-body" style="margin-top:1.2rem;">Todo empezó con un comal. En 1959, Doña María de la Cruz Hurtado emprendió su negocio en la Colonia Nuevo Repueblo, en el centro de Monterrey, empezando con tan solo un comal, ganas de salir adelante y mucho amor por la cocina.</p>
+    <p class="s-body" style="margin-top:1.2rem;">Con el tiempo, sus antojitos se fueron ganando el cariño de la gente, y cuando el pozole llegó al menú, se volvió uno de los favoritos.</p>
+    <p class="s-body" style="margin-top:1.2rem;">Su sazón y su calidez dejaron huella.</p>
+    <p class="s-body" style="margin-top:1.2rem;">Hoy ella ya no está, pero lo que nos dejó sigue aquí. Sus recetas y su forma de cocinar viven en lo que hacemos todos los días.</p>
+    <p class="s-body" style="margin-top:1.2rem;">Somos un lugar sencillo, donde buscamos que la gente se sienta en confianza, coma rico, esté a gusto y se vaya contenta… con ganas de volver.</p>
+    <p class="s-body" style="margin-top:1.2rem;">Porque más que vender comida, compartimos lo que somos.</p>
+    <p class="s-body" style="margin-top:1.2rem;">Y aquí seguimos, 68 años después, cocinando con el corazón.</p>
+    <span class="s-label" style="margin-top:3rem; display:block;">Dos sucursales en Monterrey. Un solo sabor.</span>
+    
+    <a href="#menu" class="btn-b" style="margin-top:2.5rem;display:inline-block;">Ver el Menú</a>
   </div>
 </section>
 
@@ -1206,37 +1255,6 @@ h1,h2,h3,p,span,div,a { overflow-wrap:break-word; word-break:break-word; }
   </div>
 </section>
 
-<!-- EVENTOS -->
-<section id="eventos">
-  <div class="ev-texto rev">
-    <span class="s-label">Eventos</span>
-    <h2 class="s-h2">Tú pones el motivo.<br>Nosotros ponemos <span class="pink">la comida.</span></h2>
-    <div class="s-hr"></div>
-    <p class="s-body">¿Tienes una fiesta, reunión, cumpleaños, posada o evento? Lleva pozole y antojitos a tu mesa.</p>
-    <p class="s-body" style="margin-top:1.2rem;">Cuéntanos qué evento tienes, para cuántas personas y qué te gustaría llevar, y te ayudamos a encontrar la opción que mejor se adapte a tu reunión.</p>
-    <p class="s-body" style="margin-top:1.2rem;font-style:italic;">Haz de tus eventos una ocasión para compartir el sabor de nuestra historia.</p>
-    <a href="https://wa.me/528183963102" target="_blank" class="btn-wa" style="margin-top:2.5rem;">
-      <svg viewBox="0 0 24 24" aria-hidden="true" fill="#fff">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/>
-      </svg>
-      Cotiza tu Evento
-    </a>
-  </div>
-
-  <div class="ev-lista rev">
-    <span class="ev-lista-titulo">Ideal para</span>
-    <ul class="ev-items">
-      <li><span class="ev-n">✦</span>Cumpleaños</li>
-      <li><span class="ev-n">✦</span>Reuniones familiares</li>
-      <li><span class="ev-n">✦</span>Fiestas</li>
-      <li><span class="ev-n">✦</span>Posadas</li>
-      <li><span class="ev-n">✦</span>Eventos empresariales</li>
-      <li><span class="ev-n">✦</span>Reuniones con amigos</li>
-      <li><span class="ev-n">✦</span>Cualquier ocasión que merezca buena comida</li>
-    </ul>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <div>
@@ -1270,17 +1288,23 @@ const obs = new IntersectionObserver(entries => {
 document.querySelectorAll('.rev').forEach(r=>obs.observe(r));
 
 const navLinks = document.querySelectorAll('nav ul a');
-const secciones = document.querySelectorAll('section[id]');
-const navObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      navLinks.forEach(l => l.classList.remove('activo'));
-      const link = document.querySelector('nav ul a[href="#' + e.target.id + '"]');
-      if (link) link.classList.add('activo');
+const seccionesNav = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href')));
+
+function actualizarProgresoNav(){
+  const referencia = window.scrollY + window.innerHeight * 0.4;
+  let actual = -1;
+  let mejorTop = -Infinity;
+  seccionesNav.forEach((sec, i) => {
+    if (sec && referencia >= sec.offsetTop && sec.offsetTop > mejorTop) {
+      mejorTop = sec.offsetTop;
+      actual = i;
     }
   });
-}, {rootMargin: '-45% 0px -45% 0px'});
-secciones.forEach(s => navObs.observe(s));
+  navLinks.forEach((a,i) => a.classList.toggle('activo', i === actual));
+}
+window.addEventListener('scroll', actualizarProgresoNav);
+window.addEventListener('resize', actualizarProgresoNav);
+actualizarProgresoNav();
 
 </script>
 </body>
